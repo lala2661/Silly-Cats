@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d024agmyfme3n"]
+
+[sub_resource type="AudioStream" id="AudioStream_81piv"]
+
+[node name="BgMusic" type="AudioStreamPlayer"]
+stream = SubResource("AudioStream_81piv")
+autoplay = true
+bus = &"music"

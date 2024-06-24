@@ -1,0 +1,45 @@
+{
+	"NOTHING": [
+		[
+			"Welcome to the world, I'm your mother."
+		],
+		[
+			"How are you today.",
+			{
+				"rather swell": [
+					"Good to hear"
+				],
+				"Horrible": [
+					"Oh, that's unfortunate.",
+					"I'm sorry to hear that."
+				]
+			}
+		],
+		[
+			"Why don't you go outside and talk to the other cats.",
+			"It's very important to have connections with others.",
+			"Needle's a bit of a strange one though as you may know, just don't be too influenced by him."
+		],
+		[
+			"Stay on track, it's easy to get distracted by frivolous things.",
+			"One of the most important things a cat must learn is how to hunt and how to fight.",
+			"You should talk with the cats outside to find out how."
+		],
+		[
+			"Stay safe when you go outside today."
+		],
+		[
+			"(Why is Needle singing again)"
+		],
+		[
+			"..."
+		]
+	],
+	"FLOWER": [
+		"A flower? Thanks."
+	],
+	"THEPINKCAT": [
+		"...",
+		"Take that pink cat away from me"
+	]
+}

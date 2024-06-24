@@ -1,0 +1,122 @@
+[gd_scene load_steps=17 format=3 uid="uid://cdra84lyi0yit"]
+
+[ext_resource type="PackedScene" uid="uid://d38ucwwqkipf5" path="res://entities/player/player.tscn" id="1_vsykk"]
+[ext_resource type="PackedScene" uid="uid://c2frvuhdadnig" path="res://components/edge.tscn" id="3_iuaxx"]
+[ext_resource type="Texture2D" uid="uid://sdb68du2pk81" path="res://scenes/world/bg/bg.png" id="3_n8mww"]
+[ext_resource type="Script" path="res://entities/npcs/npc.gd" id="4_gsskw"]
+[ext_resource type="Texture2D" uid="uid://brn1hmuvkrjjx" path="res://entities/npcs/sprites/pinkcat.png" id="5_bkq1j"]
+[ext_resource type="JSON" path="res://entities/npcs/dialogue_jsons/thepinkcat_dialogue.json" id="5_lq8rn"]
+[ext_resource type="PackedScene" uid="uid://boxtpa35t5prb" path="res://components/gui/bar.tscn" id="6_ec72g"]
+[ext_resource type="JSON" path="res://entities/npcs/dialogue_jsons/wonky_dialogue.json" id="7_eqdfp"]
+[ext_resource type="Texture2D" uid="uid://dgdv6n0wkw5mt" path="res://entities/npcs/sprites/wonky.png" id="7_t0m2u"]
+[ext_resource type="FontFile" uid="uid://cybe47h5ju7tg" path="res://font/Pixelify_Sans/static/PixelifySans-Regular.ttf" id="8_ywsmd"]
+[ext_resource type="Script" path="res://components/now_holding.gd" id="9_v6hcn"]
+[ext_resource type="PackedScene" uid="uid://ot3k2thwskxh" path="res://components/clickable.tscn" id="10_2326u"]
+[ext_resource type="PackedScene" uid="uid://bc41c0qwcbi1p" path="res://components/boundary.tscn" id="11_x5om4"]
+[ext_resource type="Script" path="res://components/canvas_modulate.gd" id="14_4o3rn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fajsd"]
+size = Vector2(176.063, 170.813)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2605"]
+size = Vector2(176.063, 170.813)
+
+[node name="Start" type="Node2D"]
+
+[node name="Foreground" type="Node2D" parent="."]
+z_index = 2
+
+[node name="Player" parent="." instance=ExtResource("1_vsykk")]
+z_index = 1
+position = Vector2(899, 504)
+
+[node name="LeftEdge" parent="." instance=ExtResource("3_iuaxx")]
+position = Vector2(11, 512)
+
+[node name="RightEdge" parent="." instance=ExtResource("3_iuaxx")]
+position = Vector2(1729, 504)
+scene = "res://scenes/world/vinerock.tscn"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(869, 326)
+scale = Vector2(1.80999, 1.81186)
+texture = ExtResource("3_n8mww")
+
+[node name="ThePinkCat" type="StaticBody2D" parent="." groups=["interactable", "pickupable"]]
+position = Vector2(1300, 506)
+input_pickable = true
+script = ExtResource("4_gsskw")
+item = 2
+dialogue_json = ExtResource("5_lq8rn")
+
+[node name="Sprite2D" type="Sprite2D" parent="ThePinkCat"]
+texture = ExtResource("5_bkq1j")
+
+[node name="Area2D" type="Area2D" parent="ThePinkCat"]
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThePinkCat/Area2D"]
+shape = SubResource("RectangleShape2D_fajsd")
+
+[node name="Wonky" type="StaticBody2D" parent="." groups=["interactable"]]
+position = Vector2(339, 441)
+input_pickable = true
+script = ExtResource("4_gsskw")
+item = 1
+dialogue_json = ExtResource("7_eqdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wonky"]
+texture = ExtResource("7_t0m2u")
+
+[node name="Area2D" type="Area2D" parent="Wonky"]
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wonky/Area2D"]
+shape = SubResource("RectangleShape2D_i2605")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("6_ec72g")]
+
+[node name="NowHolding" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -92.0
+offset_right = 48.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("8_ywsmd")
+theme_override_font_sizes/font_size = 40
+text = "now holding"
+script = ExtResource("9_v6hcn")
+
+[node name="Clickable" parent="." instance=ExtResource("10_2326u")]
+position = Vector2(318, 180)
+scene = "res://scenes/world/mystery_woods.tscn"
+scene_change_x_pos = 1000
+
+[node name="Boundary" parent="." instance=ExtResource("11_x5om4")]
+position = Vector2(171, 427)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.909045, 0.921753, 0.916967, 1)
+script = ExtResource("14_4o3rn")
+
+[connection signal="area_entered" from="ThePinkCat/Area2D" to="ThePinkCat" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="ThePinkCat/Area2D" to="ThePinkCat" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="ThePinkCat/Area2D" to="ThePinkCat" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="ThePinkCat/Area2D" to="ThePinkCat" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="ThePinkCat/Area2D" to="ThePinkCat" method="_on_area_2d_mouse_exited"]
+[connection signal="area_entered" from="Wonky/Area2D" to="Wonky" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Wonky/Area2D" to="Wonky" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Wonky/Area2D" to="Wonky" method="_on_area_2d_body_exited"]
+[connection signal="mouse_entered" from="Wonky/Area2D" to="Wonky" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Wonky/Area2D" to="Wonky" method="_on_area_2d_mouse_exited"]

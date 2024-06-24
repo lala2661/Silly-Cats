@@ -1,0 +1,44 @@
+{
+	"NOTHING": [
+		[
+			"Hello",
+			"I don't believe I've seen you around before",
+			"My name is Needle. It's a bit of an unusual name don't you think?",
+			"I like to think of it as pine needles, but that doesn't feel fitting either.",
+			"That's enough about me, I ramble too much."
+		],
+		[
+			"You're back?",
+			"Oh, I didn't mean that in a negative way, I'm just surprised."
+		],
+		[
+			"Hello again",
+			"How do I spend my time? Oh, nothing much.",
+			"I've been trying to grow some flowers here as you can see. It's a bit silly.",
+			"I don't know what they're called.",
+			"When I was younger I used to constantly ask every cat I knew haha.",
+			"I also collect things. I found this scarf in the human neighbourhood once and this plastic flower.",
+			"I'm growing tired of them but it feels odd not to wear them! It's like it's a part of my fur.",
+			"Maybe when I grow up I'll put them aside."
+		],
+		[
+			"I have a question for you...",
+			"What do you think about my garden",
+			{
+				"garden is rad": [
+					"Oh.... thank you"
+				],
+				"garden is bad": [
+					"Yeah I know, it's a bit silly isn't it?"
+				]
+			}
+		]
+	],
+	"FLOWER": [
+		"Thank you."
+	],
+	"THEPINKCAT": [
+		"What is this...",
+		"Garishly pink cat?"
+	]
+}

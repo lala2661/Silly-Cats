@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://50wimtrbvb48"]
+
+[ext_resource type="Texture2D" uid="uid://b3uw4gxidrpbu" path="res://components/gui/art/paneltexture.png" id="1_212m4"]
+[ext_resource type="Script" path="res://components/gui/settings.gd" id="1_jb3cv"]
+[ext_resource type="Theme" uid="uid://dmachh0rpm4r3" path="res://components/gui/text.theme" id="2_572tg"]
+[ext_resource type="Texture2D" uid="uid://dcshwt1ei7nk1" path="res://scenes/misc/main menu/button.png" id="4_hkms6"]
+[ext_resource type="Texture2D" uid="uid://ms5w8g676h60" path="res://scenes/misc/main menu/pawbutton.png" id="5_j0vx2"]
+[ext_resource type="FontFile" uid="uid://q5gmup0o3pe3" path="res://font/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="6_ni210"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jb3cv")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+offset_left = 318.0
+offset_top = 91.0
+offset_right = 854.0
+offset_bottom = 577.0
+texture = ExtResource("1_212m4")
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.0
+offset_top = -243.0
+offset_right = 268.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_572tg")
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_572tg")
+text = "Volume"
+
+[node name="Volume" type="HSlider" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Exit" type="TextureButton" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("4_hkms6")
+texture_pressed = ExtResource("5_j0vx2")
+texture_hover = ExtResource("5_j0vx2")
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/Exit"]
+layout_mode = 0
+offset_right = 165.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("6_ni210")
+theme_override_font_sizes/font_size = 30
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="NinePatchRect/MarginContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="pressed" from="NinePatchRect/MarginContainer/Exit" to="." method="_on_exit_pressed"]

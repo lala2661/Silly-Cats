@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dob7ntrx15iqd"]
+
+[ext_resource type="Texture2D" uid="uid://dennmnu6go8pj" path="res://components/exclamation.png" id="1_hypa1"]
+
+[node name="Exclamation" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 2
+texture_filter = 3
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("1_hypa1")

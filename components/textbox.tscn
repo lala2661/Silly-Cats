@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv64xbhw3fjgv"]
+
+[ext_resource type="Script" path="res://components/textbox.gd" id="1_8wl2m"]
+[ext_resource type="Texture2D" uid="uid://dbrh2comc1bjt" path="res://components/gui/art/bubble.png" id="2_d06sb"]
+[ext_resource type="FontFile" uid="uid://q5gmup0o3pe3" path="res://font/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="3_maqcf"]
+[ext_resource type="Texture2D" uid="uid://dcshwt1ei7nk1" path="res://scenes/misc/main menu/button.png" id="3_pm6en"]
+[ext_resource type="Texture2D" uid="uid://ms5w8g676h60" path="res://scenes/misc/main menu/pawbutton.png" id="4_568jc"]
+
+[sub_resource type="Theme" id="Theme_wdxvp"]
+
+[node name="Textbox" type="MarginContainer"]
+z_index = 2
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = -1
+anchor_right = 0.180118
+offset_right = -0.496002
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_8wl2m")
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 3
+layout_mode = 2
+texture = ExtResource("2_d06sb")
+region_rect = Rect2(-0.109371, -0.0587034, 48.4075, 48.2206)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 5
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer"]
+texture_filter = 3
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_wdxvp")
+theme_override_colors/default_color = Color(0.481399, 0.324332, 0.201881, 1)
+theme_override_fonts/normal_font = ExtResource("3_maqcf")
+fit_content = true
+scroll_active = false
+
+[node name="Options" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Option1" type="TextureButton" parent="MarginContainer/Options"]
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_pm6en")
+texture_pressed = ExtResource("4_568jc")
+texture_hover = ExtResource("4_568jc")
+stretch_mode = 0
+
+[node name="Option1Label" type="Label" parent="MarginContainer/Options/Option1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_maqcf")
+text = "your garden is rad"
+horizontal_alignment = 1
+
+[node name="Option2" type="TextureButton" parent="MarginContainer/Options"]
+layout_mode = 2
+mouse_filter = 1
+texture_normal = ExtResource("3_pm6en")
+texture_pressed = ExtResource("4_568jc")
+texture_hover = ExtResource("4_568jc")
+stretch_mode = 0
+
+[node name="Option2Label" type="Label" parent="MarginContainer/Options/Option2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_maqcf")
+text = "your garden is bad"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/Options/Option1" to="." method="_on_option_1_pressed"]
+[connection signal="pressed" from="MarginContainer/Options/Option2" to="." method="_on_option_2_pressed"]

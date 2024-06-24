@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxo8e6lerge4q"]
+
+[ext_resource type="Texture2D" uid="uid://b3uw4gxidrpbu" path="res://components/gui/art/paneltexture.png" id="1_fx5en"]
+[ext_resource type="FontFile" uid="uid://q5gmup0o3pe3" path="res://font/Pixelify_Sans/PixelifySans-VariableFont_wght.ttf" id="2_1tjov"]
+[ext_resource type="Texture2D" uid="uid://dcshwt1ei7nk1" path="res://scenes/misc/main menu/button.png" id="3_jto0l"]
+[ext_resource type="Texture2D" uid="uid://ms5w8g676h60" path="res://scenes/misc/main menu/pawbutton.png" id="4_xswni"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+offset_left = 397.0
+offset_top = 222.0
+offset_right = 755.0
+offset_bottom = 426.0
+texture = ExtResource("1_fx5en")
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -102.0
+offset_right = 187.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.462745, 0.294118, 0.0627451, 1)
+theme_override_fonts/font = ExtResource("2_1tjov")
+text = "You've reached the end.
+Do you want to end the game?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Yes" type="TextureButton" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("3_jto0l")
+texture_pressed = ExtResource("4_xswni")
+texture_hover = ExtResource("4_xswni")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/Yes"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1tjov")
+text = "YES"
+
+[node name="No" type="TextureButton" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(9, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("3_jto0l")
+texture_pressed = ExtResource("4_xswni")
+texture_hover = ExtResource("4_xswni")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/No"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.5
+offset_top = -11.5
+offset_right = 10.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_1tjov")
+text = "NO
+"

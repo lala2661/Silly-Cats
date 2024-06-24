@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://d38ucwwqkipf5"]
+
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_ktap1"]
+[ext_resource type="Script" path="res://entities/player/shading.gd" id="2_1iisv"]
+[ext_resource type="Texture2D" uid="uid://cwykj888jnm3y" path="res://entities/player/playeridle.png" id="2_8nhml"]
+[ext_resource type="Texture2D" uid="uid://ck17bkcr0xy7a" path="res://entities/player/playerwalk1.png" id="3_q4okx"]
+[ext_resource type="Texture2D" uid="uid://ca0g2g6gshmf2" path="res://entities/player/playerwalk2.png" id="4_e6bss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgecn"]
+size = Vector2(41, 46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v5prx"]
+radius = 95.0474
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8iq8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8nhml")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_q4okx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e6bss")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_fblde"]
+resource_name = "walkLeft"
+
+[sub_resource type="Animation" id="Animation_355v8"]
+resource_name = "walkRight"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m73bw"]
+_data = {
+"walkLeft": SubResource("Animation_fblde"),
+"walkRight": SubResource("Animation_355v8")
+}
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ktap1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -180)
+limit_left = 0
+limit_right = 1736
+drag_horizontal_offset = 0.11
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+visible = false
+offset_left = -1.0
+offset_right = 1151.0
+offset_bottom = 649.0
+scale = Vector2(1.04108, 1.02336)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.298039)
+script = ExtResource("2_1iisv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_fgecn")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_priority = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_v5prx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8iq8y")
+animation = &"walk"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m73bw")
+}
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
