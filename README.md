@@ -2,7 +2,7 @@
 
 RPG game made in Godot for grade 12 computer science final over the course of a month. It's my first time using Godot!
 
-## Installation:
+[Installation](https://github.com/lala2661/Silly-Cats/releases/tag/v1)
 
 ## Screenshots:
 ![image](https://github.com/user-attachments/assets/68e45cb7-ff52-4702-bee2-94e05b7379be)
